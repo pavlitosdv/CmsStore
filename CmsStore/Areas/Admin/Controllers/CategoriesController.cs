@@ -118,6 +118,8 @@ namespace CmsStore.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+
+                                            // used for Jquery ui section 
         // POST /admin/pages/categories
         [HttpPost]
         public async Task<IActionResult> Reorder(int[] id)

@@ -10,6 +10,7 @@
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table sorting" id="categories">
+    @*sorting" id="pages" will be used for the jquery ui fanctionality*@
     <thead>
         <tr>
             <th>
@@ -25,6 +26,7 @@
         @foreach (var item in Model)
         {
             <tr id="id_@item.Id">
+                @*id="id_@item.Id" will be used for the jquery ui fanctionality*@
                 <td>
                     @item.Name
                 </td>
@@ -39,6 +41,9 @@
         }
     </tbody>
 </table>
+
+
+@*  Jquery ui section  *@
 
 @section Scripts {
     <script>
