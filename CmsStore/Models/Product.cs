@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CmsStore.Extensions;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -34,7 +35,7 @@ namespace CmsStore.Models
         public virtual Category Category { get; set; }
 
         [NotMapped]
-        //[FileExtension]
+        [FileExtension]
         public IFormFile ImageUpload { get; set; }
     }
 }
