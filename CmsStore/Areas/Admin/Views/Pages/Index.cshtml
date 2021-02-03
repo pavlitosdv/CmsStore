@@ -10,7 +10,7 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-<table class="table sorting" id="pages">
+<table class="table sorting" id="pages">  @*sorting" id="pages" will be used for the jquery ui fanctionality*@
     <thead>
         <tr class="home">
             <th>
@@ -25,7 +25,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr id="id_@item.Id" class="@item.Slug">
+            <tr id="id_@item.Id" class="@item.Slug">  @*id="id_@item.Id" class="@item.Slug" will be used for the jquery ui fanctionality*@
                 <td>
                     @item.Title
                 </td>
@@ -45,10 +45,12 @@
     </tbody>
 </table>
 
+
+                        @*  Jquery ui section  *@
 @section Scripts {
     <script>
         $("table#pages tbody").sortable({
-            items: "tr:not(.home)",
+            items: "tr:not(.home)", // all except from those with class home
             placeholder: "ui-state-highlight",
             update: function () {
                 let ids = $("table#pages tbody").sortable("serialize");
