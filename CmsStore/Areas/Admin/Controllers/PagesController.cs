@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CmsShoppingCart.Models;
 using CmsStore.Data;
 using CmsStore.Models;
 using Microsoft.AspNetCore.Authorization;

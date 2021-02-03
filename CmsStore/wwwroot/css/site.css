@@ -70,7 +70,7 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-/*/////////////////////////////////////////////////////////////////*/
+/* (1) /////////////////////////////////////////////////////////////////*/
 /*for jquery ui pursposes (sorting / reordering )*/
 table.sorting tr:not(.home) {
     cursor: pointer;
@@ -78,4 +78,10 @@ table.sorting tr:not(.home) {
 
 .ui-state-highlight {
     border: 1px dashed #ccc;
+}
+
+
+/* (2) /////////////////////////////////////////////////////////////////*/
+a:hover {
+    opacity: .3 !important;  /*hover effect when targeting an <a> tag*/
 }
