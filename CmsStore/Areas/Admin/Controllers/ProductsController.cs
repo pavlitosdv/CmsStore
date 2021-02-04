@@ -29,12 +29,14 @@ namespace CmsStore.Areas.Admin.Controllers
         // GET /admin/products
         public async Task<IActionResult> Index(int p = 1)
         {
-            int pageSize = 6;
+            int pageSize = 5;
             var products = context.Products.OrderByDescending(x => x.Id)
                                             .Include(x => x.Category)
                                             .Skip((p - 1) * pageSize)
                                             .Take(pageSize);
-
+            
+            
+            // the following ViewBags will be matched with the pagination line of code in the index view
             ViewBag.PageNumber = p;
             ViewBag.PageRange = pageSize;
             ViewBag.TotalPages = (int)Math.Ceiling((decimal)context.Products.Count() / pageSize);
