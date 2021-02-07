@@ -1,7 +1,9 @@
 using CmsStore.Data;
+using CmsStore.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +37,16 @@ namespace CmsStore
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => {
+                options.Password.RequiredLength = 4;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+            })
+                    .AddEntityFrameworkStores<ApplicationDBContext>()
+                    .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +69,8 @@ namespace CmsStore
             
             app.UseSession();
 
-            app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();         
 
             app.UseEndpoints(endpoints =>
             {
