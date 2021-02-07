@@ -54,6 +54,7 @@ namespace CmsStore.Controllers
 
             HttpContext.Session.SetJson("Cart", cart);
 
+            // if it is not an ajax request, it will be redirected to index else will return the view component
             if (HttpContext.Request.Headers["X-Requested-With"] != "XMLHttpRequest")
                 return RedirectToAction("Index");
 
@@ -114,9 +115,9 @@ namespace CmsStore.Controllers
             HttpContext.Session.Remove("Cart");
 
             //return RedirectToAction("Page", "Pages");
-            //return Redirect("/");
+            //return Redirect("/"); // with "/"  redirect us to the root page
             if (HttpContext.Request.Headers["X-Requested-With"] != "XMLHttpRequest")
-                return Redirect(Request.Headers["Referer"].ToString());
+                return Redirect(Request.Headers["Referer"].ToString());  // redirect us to the previous request (i.e. to the same page)
 
             return Ok();
         }
